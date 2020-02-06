@@ -22,7 +22,7 @@ end
   Patient.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    city_id: City.find(rand(City.first.id..City.last.id))
+    city_id: City.find(rand(City.first.id..City.last.id)).id
   )
 end
 
@@ -30,7 +30,7 @@ end
   Doctor.create(first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     zip_code: Faker::Address.zip,
-    city_id: City.find(rand(City.first.id..City.last.id))
+    city_id: City.find(rand(City.first.id..City.last.id)).id
   )
 end
 
@@ -43,15 +43,15 @@ end
 50.times do |index|
   Appointment.create(
     date: Faker::Date.in_date_period,
-    patient_id: Patient.find(rand(Patient.first.id..Patient.last.id)),
-    doctor_id: Doctor.find(rand(Doctor.first.id..Doctor.last.id)),
-    city_id: City.find(rand(City.first.id..City.last.id))
+    patient_id: Patient.find(rand(Patient.first.id..Patient.last.id)).id,
+    doctor_id: Doctor.find(rand(Doctor.first.id..Doctor.last.id)).id,
+    city_id: City.find(rand(City.first.id..City.last.id)).id
   )
 end
 
 20.times do |index|
   InterSpec.create(
-    doctor_id:  Doctor.find(rand(Doctor.first.id..Doctor.last.id)),
-    specialty_id: Specialty.find(rand(Specialty.first.id..Specialty.last.id))
+    doctor_id:  Doctor.find(rand(Doctor.first.id..Doctor.last.id)).id,
+    specialty_id: Specialty.find(rand(Specialty.first.id..Specialty.last.id)).id
     )
 end
